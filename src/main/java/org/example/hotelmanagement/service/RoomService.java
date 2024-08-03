@@ -3,13 +3,14 @@ package org.example.hotelmanagement.service;
 import org.example.hotelmanagement.entity.RoomEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RoomService {
     List<RoomEntity> getAll();
 
-    RoomEntity getRoomById(Long id);
+    Optional<RoomEntity> getRoomById(Long id);
 
-    RoomEntity getRoomByRoomNumber(String roomNumber);
+    Optional<RoomEntity> getRoomByRoomNumber(String roomNumber);
 
     RoomEntity save(RoomEntity room);
 

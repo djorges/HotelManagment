@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:utext="${title}">Edit Room</title>
+    <th:block th:replace="layouts/layout :: head"></th:block>
+</head>
+<body>
+    <th:block th:replace="layouts/layout :: content">
+        <h1 class="text-3xl font-bold mb-4">Add New Room</h1>
+        <form th:action="@{/rooms/edit/{id}(id=${room.id})}" method="post" th:object="${room}">
+            <div class="mb-4">
+                <label for="roomNumber">Room Number:</label>
+                <input
+                        type="text"
+                        id="roomNumber"
+                        name="roomNumber"
+                        th:field="*{roomNumber}"
+                        required
+                />
+            </div>
+            <div class="mb-4">
+                <label for="capacity">Capacity:</label>
+                <input
+                        type="number"
+                        id="capacity"
+                        name="capacity"
+                        th:field="*{capacity}"
+                        required
+                />
+            </div>
+            <div class="mb-4">
+                <label for="pricePerNight">Price Per Night:</label>
+                <input
+                        type="number"
+                        id="pricePerNight"
+                        name="pricePerNight"
+                        th:field="*{pricePerNight}"
+                        required
+                />
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-right font-semibold rounded-lg py-2">Send</button>
+        </form>
+        <a th:href="@{/rooms}">Cancel</a>
+    </th:block>
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoomServiceImpl implements RoomService{
@@ -19,17 +20,13 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public RoomEntity getRoomById(Long id){
-        return roomRepository.findById(id).orElseThrow(
-                ()-> new EntityNotFoundException("Room not found")
-        );
+    public Optional<RoomEntity> getRoomById(Long id){
+        return roomRepository.findById(id);
     }
 
     @Override
-    public RoomEntity getRoomByRoomNumber(String roomNumber){
-        return roomRepository.getRoomByRoomNumber(Long.getLong(roomNumber)).orElseThrow(
-            ()-> new EntityNotFoundException("Room not found")
-        );
+    public Optional<RoomEntity> getRoomByRoomNumber(String roomNumber){
+        return roomRepository.getRoomByRoomNumber(Long.getLong(roomNumber));
     }
 
     @Override
